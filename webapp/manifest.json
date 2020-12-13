@@ -15,7 +15,7 @@
 		},
 		"dataSources": {
 			"GWSAMPLE_BASIC": {
-				"uri": "/ES5/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/",
+				"uri": "/api",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/metadata.xml"

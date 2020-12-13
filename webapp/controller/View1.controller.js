@@ -33,7 +33,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oSelect2 = this.getView().byId("slCategory");
 			//var oSelect3 = this.getView().byId("slName");
 
-			var sURI = "/ES5/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/";
+			var sURI = "/api";
 
 			var oModel1 = new sap.ui.model.odata.ODataModel(sURI);
 			var oModel2 = new sap.ui.model.odata.ODataModel(sURI);

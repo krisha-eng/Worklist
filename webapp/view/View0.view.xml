@@ -1,0 +1,26 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="wl.Worklist.controller.View0">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+					<VBox class="sapUiSmallMargin">
+				    <Label text="Product ID" width="100%" id="label0"/>
+				    <Select xmlns="sap.m" id="select0" items="{path: '/ProductSet'}">
+				        <items>
+				            <core:Item xmlns:core="sap.ui.core" key="{ProductID}" text="{ProductID}" id="item0"/>
+				            </items>
+				        
+				    </Select>
+				    <Label text="Product Name" width="100%" id="label1"/>
+				    <Select xmlns="sap.m" id="select1" items="{path: '/ProductSet'}">
+				        <items>
+				            <core:Item xmlns:core="sap.ui.core" key="{ProductID}" text="{Name}" id="item1"/>
+				            </items>
+				        
+				    </Select><Button xmlns="sap.m" text="Review" id="button0" press="GoToView1"/>
+				    </VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

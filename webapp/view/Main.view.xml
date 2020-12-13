@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="wl.Worklist.controller.Main" displayBlock="true">
+	<Shell id="shell">
+		<App id="Main_id">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

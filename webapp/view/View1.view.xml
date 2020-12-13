@@ -1,0 +1,101 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:vm="sap.ui.comp.variants" xmlns:fb="sap.ui.comp.filterbar" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="wl.Worklist.controller.View1">
+
+	<App>
+		<pages>
+			<Page title="Products List">
+				<content>
+					<fb:FilterBar id="myFilterBar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="false">
+						<fb:filterItems>
+							<fb:FilterItem name="A" label="ProductID">
+								<fb:control>
+									<Select id="slProductID" forceSelection="true" change="onSelectChange" items="{path: '/ProductSet'}" selectedKey="{ProductID}">
+										<core:Item key="{ProductID}" text="{ProductID}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="B" label="Category">
+								<fb:control>
+									<!--This model is set and coming from COntroller to View - oODataJSONModel-->
+									<Select id="slCategory" change="onSelectChange" items="{path: '/Category'}" forceSelection="true" >
+										<core:Item key="{category}" text="{category}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterItem>
+							<!--<fb:FilterItem name="C" label="ProductID_MultiCombo">-->
+							<!--	<fb:control>-->
+							<!--		<MultiComboBox id="slName" selectionFinish="handleSelectionFinish" items="{path: '/ProductSet'}"  >-->
+							<!--			<core:Item key="{ProductID}" text="{ProductID}"/>-->
+							<!--		</MultiComboBox>-->
+							<!--	</fb:control>-->
+							<!--</fb:FilterItem>-->
+							<fb:FilterItem name="D" >
+								<fb:control>
+									<MultiInput id="slInput" valueHelpRequest="handleValueHelp" tokenUpdate="handleTokenUpdate" placeholder="Select Multiple Product IDs" suggestionItems="{path: '/ProductSet'}">
+										<core:Item key="{ProductID}" text="{ProductID}"/>
+									</MultiInput>
+								</fb:control>
+							</fb:FilterItem>
+						</fb:filterItems>
+						<Button text="Reset" press="onPress"/>
+					</fb:FilterBar>
+					
+					<Table noDataText="No Data" items="{path: '/ProductSet', parameters: { expand: 'ToSupplier' }}" id="table0">
+						<!--To Supplier is needed above if you want to bind Navigation Property items-->
+							<infoToolbar>
+								<OverflowToolbar>
+									<ToolbarSpacer/>
+									<SearchField xmlns="sap.m" placeholder="Search Table" id="field0" width="25%" liveChange="handleSearch"/>
+								</OverflowToolbar>
+							</infoToolbar>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label text="Product ID" id="label0"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="Name" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Category" id="label2"/>
+								</header>
+							</Column>
+							<Column id="columnextra">
+								<header>
+									<Label text="Supplier Name" id="labelextra"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label text="Price" id="label3"/>
+								</header>
+							</Column>
+							<Column id="column4">
+								<header>
+									<Label text="Supplied from City" id="label4"/>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active" id="item0" press="GoToView2">
+								<cells>
+									<Text text="{ProductID}" id="text0"/>
+									<Text text="{Name}" id="text1"/>
+									<Text text="{Category}" id="text2"/>
+									<Text text="{SupplierName}" id="textextra"/>
+									<!--<Text text ="{Price} {= ${Price} > 300 ? 'Error' : 'Success' }" id="text3"/>-->
+									<ObjectNumber number="{Price}" state="{= ${Price} &gt; 300 ? 'Success' : 'Error' }" unit="{CurrencyCode}"/>
+									<Text text="{ToSupplier/Address/City}" id="text3"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+
+</mvc:View>
